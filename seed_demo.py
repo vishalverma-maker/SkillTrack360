@@ -14,7 +14,7 @@ from datetime import date, timedelta
 
 from werkzeug.security import generate_password_hash
 
-from app import app
+
 from models import db
 from models.user import User
 from models.trainee import Trainee
@@ -844,7 +844,7 @@ def seed_demo_data():
 # ============================================================
 
 if __name__ == "__main__":
+    from app import app
 
     with app.app_context():
-
         seed_demo_data()

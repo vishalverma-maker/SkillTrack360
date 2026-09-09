@@ -12,7 +12,7 @@ from models.trainee import Trainee
 from routes.auth import auth_bp
 from routes.trainee import trainee_bp
 from routes.government import government_bp
-
+from models.trainee import Trainee
 
 def create_app():
 
@@ -115,7 +115,10 @@ def create_app():
 
             db.session.commit()
 
-
+        # Seed synthetic demo data when database is empty
+        if Trainee.query.count() == 0:
+            from seed_demo import seed_demo_data
+            seed_demo_data()
     # =========================================
     # HOME ROUTE
     # =========================================
