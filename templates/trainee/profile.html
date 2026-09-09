@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Complete Profile — SkillTrack 360°
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/profile.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <a
+            href="{{ url_for('trainee.dashboard') }}"
+            class="brand"
+        >
+
+            <div class="brand-icon">
+                ST
+            </div>
+
+            <div>
+
+                <strong>
+                    SkillTrack
+                </strong>
+
+                <span>
+                    360°
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <a
+            href="{{ url_for('auth.logout') }}"
+            class="logout"
+        >
+            Logout
+        </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <div class="page-heading">
+
+            <p class="eyebrow">
+                TRAINEE PROFILE
+            </p>
+
+            <h1>
+                Complete your profile
+            </h1>
+
+            <p>
+                Add your education and training information
+                to start tracking your career journey.
+            </p>
+
+        </div>
+
+
+        <form
+            method="POST"
+            class="profile-form"
+        >
+
+
+            <!-- ==========================
+                 PERSONAL INFORMATION
+            =========================== -->
+
+            <section class="form-card">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Personal Information
+                        </h2>
+
+                        <p>
+                            Tell us a little about yourself.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group full">
+
+                        <label for="full_name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="full_name"
+                            name="full_name"
+                            value="{{ trainee.full_name or '' }}"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="age">
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            min="1"
+                            max="100"
+                            value="{{ trainee.age or '' }}"
+                            placeholder="e.g. 20"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="gender">
+                            Gender
+                        </label>
+
+                        <select
+                            id="gender"
+                            name="gender"
+                        >
+
+                            <option value="">
+                                Select gender
+                            </option>
+
+                            <option
+                                value="Male"
+                                {% if trainee.gender == "Male" %}
+                                selected
+                                {% endif %}
+                            >
+                                Male
+                            </option>
+
+                            <option
+                                value="Female"
+                                {% if trainee.gender == "Female" %}
+                                selected
+                                {% endif %}
+                            >
+                                Female
+                            </option>
+
+                            <option
+                                value="Other"
+                                {% if trainee.gender == "Other" %}
+                                selected
+                                {% endif %}
+                            >
+                                Other
+                            </option>
+
+                            <option
+                                value="Prefer not to say"
+                                {% if trainee.gender == "Prefer not to say" %}
+                                selected
+                                {% endif %}
+                            >
+                                Prefer not to say
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="district">
+                            District
+                        </label>
+
+                        <select
+                            id="district"
+                            name="district"
+                        >
+
+                            <option value="">
+                                Select district
+                            </option>
+
+                            <option
+                                value="Mumbai"
+                                {% if trainee.district == "Mumbai" %}
+                                selected
+                                {% endif %}
+                            >
+                                Mumbai
+                            </option>
+
+                            <option
+                                value="Pune"
+                                {% if trainee.district == "Pune" %}
+                                selected
+                                {% endif %}
+                            >
+                                Pune
+                            </option>
+
+                            <option
+                                value="Nagpur"
+                                {% if trainee.district == "Nagpur" %}
+                                selected
+                                {% endif %}
+                            >
+                                Nagpur
+                            </option>
+
+                            <option
+                                value="Nashik"
+                                {% if trainee.district == "Nashik" %}
+                                selected
+                                {% endif %}
+                            >
+                                Nashik
+                            </option>
+
+                            <option
+                                value="Thane"
+                                {% if trainee.district == "Thane" %}
+                                selected
+                                {% endif %}
+                            >
+                                Thane
+                            </option>
+
+                            <option
+                                value="Other"
+                                {% if trainee.district == "Other" %}
+                                selected
+                                {% endif %}
+                            >
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="education">
+                            Highest Education
+                        </label>
+
+                        <select
+                            id="education"
+                            name="education"
+                        >
+
+                            <option value="">
+                                Select qualification
+                            </option>
+
+                            <option
+                                value="10th"
+                                {% if trainee.education == "10th" %}
+                                selected
+                                {% endif %}
+                            >
+                                10th
+                            </option>
+
+                            <option
+                                value="12th"
+                                {% if trainee.education == "12th" %}
+                                selected
+                                {% endif %}
+                            >
+                                12th
+                            </option>
+
+                            <option
+                                value="Diploma"
+                                {% if trainee.education == "Diploma" %}
+                                selected
+                                {% endif %}
+                            >
+                                Diploma
+                            </option>
+
+                            <option
+                                value="Graduate"
+                                {% if trainee.education == "Graduate" %}
+                                selected
+                                {% endif %}
+                            >
+                                Graduate
+                            </option>
+
+                            <option
+                                value="Post Graduate"
+                                {% if trainee.education == "Post Graduate" %}
+                                selected
+                                {% endif %}
+                            >
+                                Post Graduate
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================
+                 TRAINING INFORMATION
+            =========================== -->
+
+            <section class="form-card">
+
+                <div class="section-title">
+
+                    <div class="section-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Training Information
+                        </h2>
+
+                        <p>
+                            Add the details of your skill-development program.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group full">
+
+                        <label for="training_program">
+                            Training Program
+                        </label>
+
+                        <input
+                            type="text"
+                            id="training_program"
+                            name="training_program"
+                            value="{{ trainee.training_program or '' }}"
+                            placeholder="e.g. Full Stack Web Development"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="training_provider">
+                            Training Provider
+                        </label>
+
+                        <input
+                            type="text"
+                            id="training_provider"
+                            name="training_provider"
+                            value="{{ trainee.training_provider or '' }}"
+                            placeholder="e.g. ABC Skill Development Centre"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="training_start_date">
+                            Training Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="training_start_date"
+                            name="training_start_date"
+                            value="{{ trainee.training_start_date or '' }}"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="training_completion_date">
+                            Completion Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="training_completion_date"
+                            name="training_completion_date"
+                            value="{{ trainee.training_completion_date or '' }}"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="certificate_status">
+                            Certificate Status
+                        </label>
+
+                        <select
+                            id="certificate_status"
+                            name="certificate_status"
+                        >
+
+                            <option
+                                value="Pending"
+                                {% if trainee.certificate_status == "Pending" %}
+                                selected
+                                {% endif %}
+                            >
+                                Pending
+                            </option>
+
+                            <option
+                                value="Issued"
+                                {% if trainee.certificate_status == "Issued" %}
+                                selected
+                                {% endif %}
+                            >
+                                Issued
+                            </option>
+
+                            <option
+                                value="Verified"
+                                {% if trainee.certificate_status == "Verified" %}
+                                selected
+                                {% endif %}
+                            >
+                                Verified
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================
+                 CONSENT
+            =========================== -->
+
+            <section class="consent-card">
+
+                <div class="consent-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Outcome tracking consent
+                    </strong>
+
+                    <p>
+                        You have consented to SkillTrack using your
+                        information for post-training outcome follow-up
+                        and program improvement.
+                    </p>
+
+                </div>
+
+                <span class="consent-status">
+                    Active
+                </span>
+
+            </section>
+
+
+            <!-- ACTIONS -->
+
+            <div class="form-actions">
+
+                <a
+                    href="{{ url_for('trainee.dashboard') }}"
+                    class="cancel"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="save"
+                >
+                    Save Profile →
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </main>
+
+</div>
+
+
+</body>
+
+</html>

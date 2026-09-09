@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SkillTrack 360° | Create Account</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 15%,
+                    rgba(99,91,255,.18),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 90% 85%,
+                    rgba(40,120,232,.16),
+                    transparent 35%
+                ),
+                #f4f7fb;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #172033;
+
+            padding: 30px;
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .signup-container {
+
+            width: 100%;
+            max-width: 1050px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.05fr
+                .95fr;
+
+            background: white;
+
+            border-radius: 26px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 80px rgba(25,40,70,.13);
+        }
+
+
+        /* =========================================
+           LEFT BRAND
+        ========================================= */
+
+        .signup-brand {
+
+            padding: 55px 65px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #2878e8,
+                    #4d68ee,
+                    #635bff
+                );
+
+            color: white;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .signup-brand::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 320px;
+            height: 320px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.07);
+
+            top: -120px;
+            right: -100px;
+        }
+
+
+        .signup-brand::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.05);
+
+            bottom: -90px;
+            left: -70px;
+        }
+
+
+        .brand-content {
+
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .logo {
+
+            width: 58px;
+            height: 58px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,.16);
+
+            border:
+                1px solid rgba(255,255,255,.22);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+
+            font-weight: 800;
+
+            margin-bottom: 25px;
+        }
+
+
+        .brand-eyebrow {
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.8px;
+
+            opacity: .8;
+
+            margin-bottom: 9px;
+        }
+
+
+        .signup-brand h1 {
+
+            font-size: 38px;
+
+            line-height: 1.1;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 14px;
+        }
+
+
+        .signup-brand h1 span {
+
+            font-weight: 400;
+
+            opacity: .9;
+        }
+
+
+        .brand-description {
+
+            max-width: 410px;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color:
+                rgba(255,255,255,.88);
+        }
+
+
+        /* =========================================
+           FEATURES
+        ========================================= */
+
+        .feature-list {
+
+            margin-top: 28px;
+
+            display: grid;
+
+            gap: 12px;
+        }
+
+
+        .feature {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            font-size: 12px;
+        }
+
+
+        .feature-icon {
+
+            width: 33px;
+            height: 33px;
+
+            border-radius: 9px;
+
+            background:
+                rgba(255,255,255,.13);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =========================================
+           RIGHT FORM
+        ========================================= */
+
+        .signup-form {
+
+            padding: 48px 58px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .eyebrow {
+
+            color: #2878e8;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.6px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .signup-form h2 {
+
+            font-size: 28px;
+
+            letter-spacing: -.7px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .signup-subtitle {
+
+            color: #718096;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =========================================
+           FLASH MESSAGE
+        ========================================= */
+
+        .alert {
+    background: #f0faf4;
+    border: 1px solid #b7e4c7;
+    color: #18794e;
+    padding: 11px 13px;
+    border-radius: 9px;
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .form-row {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 12px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 13px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            color: #344054;
+
+            margin-bottom: 6px;
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            height: 43px;
+
+            padding:
+                0 12px;
+
+            border:
+                1px solid #d9e0ea;
+
+            border-radius: 9px;
+
+            background: white;
+
+            font-size: 12px;
+
+            color: #172033;
+
+            outline: none;
+
+            transition:
+                border-color .2s,
+                box-shadow .2s;
+        }
+
+
+        .form-group input::placeholder {
+
+            color: #a0aec0;
+        }
+
+
+        .form-group input:focus {
+
+            border-color: #2878e8;
+
+            box-shadow:
+                0 0 0 3px rgba(40,120,232,.10);
+        }
+
+
+        /* =========================================
+           CONSENT
+        ========================================= */
+
+        .consent {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 9px;
+
+            margin-top: 2px;
+
+            margin-bottom: 16px;
+
+            padding: 11px;
+
+            border-radius: 10px;
+
+            background: #f7f9fc;
+
+            border:
+                1px solid #e8edf4;
+        }
+
+
+        .consent input {
+
+            margin-top: 2px;
+
+            accent-color: #2878e8;
+
+            flex-shrink: 0;
+        }
+
+
+        .consent label {
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+            color: #667085;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .signup-button {
+
+            width: 100%;
+
+            height: 46px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2878e8,
+                    #635bff
+                );
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 20px rgba(40,120,232,.20);
+
+            transition:
+                transform .2s,
+                box-shadow .2s;
+        }
+
+
+        .signup-button:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 11px 25px rgba(40,120,232,.27);
+        }
+
+
+        /* =========================================
+           LOGIN LINK
+        ========================================= */
+
+        .login-link {
+
+            text-align: center;
+
+            margin-top: 17px;
+
+            color: #718096;
+
+            font-size: 11px;
+        }
+
+
+        .login-link a {
+
+            color: #2878e8;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            margin-left: 3px;
+        }
+
+
+        .login-link a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================================
+           SECURITY
+        ========================================= */
+
+        .security-note {
+
+            text-align: center;
+
+            color: #98a2b3;
+
+            font-size: 9px;
+
+            margin-top: 18px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 820px) {
+
+            body {
+                padding: 18px;
+            }
+
+            .signup-container {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+            }
+
+            .signup-brand {
+                padding: 38px;
+            }
+
+            .signup-brand h1 {
+                font-size: 30px;
+            }
+
+            .signup-form {
+                padding: 40px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .signup-brand {
+                padding: 30px 25px;
+            }
+
+            .signup-form {
+                padding: 32px 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .signup-brand h1 {
+                font-size: 27px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="signup-container">
+
+
+        <!-- =============================================
+             LEFT BRAND PANEL
+        ============================================== -->
+
+        <section class="signup-brand">
+
+            <div class="brand-content">
+
+                <div class="logo">
+                    ST
+                </div>
+
+
+                <div class="brand-eyebrow">
+                    JOIN THE SKILLTRACK NETWORK
+                </div>
+
+
+                <h1>
+                    SkillTrack
+                    <span>360°</span>
+                </h1>
+
+
+                <p class="brand-description">
+
+                    Build your training profile today and
+                    help create a clearer picture of what
+                    happens after skill development.
+
+                </p>
+
+
+                <div class="feature-list">
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🎓
+                        </div>
+
+                        <span>
+                            Record your training journey
+                        </span>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            📈
+                        </div>
+
+                        <span>
+                            Track career outcomes over time
+                        </span>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🔐
+                        </div>
+
+                        <span>
+                            Consent-based data tracking
+                        </span>
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <div class="feature-icon">
+                            🤖
+                        </div>
+
+                        <span>
+                            Help improve future training programs
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =============================================
+             RIGHT SIGNUP FORM
+        ============================================== -->
+
+        <section class="signup-form">
+
+
+            <div class="eyebrow">
+                TRAINEE REGISTRATION
+            </div>
+
+
+            <h2>
+                Create your account
+            </h2>
+
+
+            <p class="signup-subtitle">
+
+                Register once to create your SkillTrack
+                profile and begin your outcome journey.
+
+            </p>
+
+
+            <!-- FLASH MESSAGES -->
+
+            {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="alert">
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+
+            <!-- IMPORTANT:
+                 Keep all existing Flask field names unchanged.
+            -->
+
+            <form method="POST">
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="full_name">
+                            Full Name
+                        </label>
+
+                        <input
+                            id="full_name"
+                            type="text"
+                            name="full_name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="mobile">
+                            Mobile Number
+                        </label>
+
+                        <input
+    id="phone"
+    type="tel"
+    name="phone"
+    placeholder="10-digit mobile number"
+    required
+>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            placeholder="Create a password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirm_password">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            id="confirm_password"
+                            type="password"
+                            name="confirm_password"
+                            placeholder="Repeat password"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- CONSENT -->
+
+                <div class="consent">
+
+                    <input
+                        id="consent"
+                        type="checkbox"
+                        name="consent"
+                        required
+                    >
+
+                    <label for="consent">
+
+                        I consent to SkillTrack using my
+                        information for post-training outcome
+                        follow-up and program improvement.
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="signup-button"
+                >
+                    Create SkillTrack Account →
+                </button>
+
+
+            </form>
+
+
+            <div class="login-link">
+
+                Already have an account?
+
+                <a href="{{ url_for('auth.login') }}">
+                    Login
+                </a>
+
+            </div>
+
+
+            <div class="security-note">
+
+                🔒 Your participation is consent-based
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+</body>
+
+</html>

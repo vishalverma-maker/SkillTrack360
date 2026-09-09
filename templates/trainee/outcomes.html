@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Career Outcomes — SkillTrack 360°
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/outcomes.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <a
+            href="{{ url_for('trainee.dashboard') }}"
+            class="brand"
+        >
+
+            <div class="brand-icon">
+                ST
+            </div>
+
+            <div>
+
+                <strong>
+                    SkillTrack
+                </strong>
+
+                <span>
+                    360°
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="header-right">
+
+            <span>
+                {{ trainee.full_name }}
+            </span>
+
+            <a
+                href="{{ url_for('auth.logout') }}"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <!-- HEADING -->
+
+        <div class="heading">
+
+            <p class="eyebrow">
+                CAREER OUTCOMES
+            </p>
+
+            <h1>
+                Tell us what happened after training.
+            </h1>
+
+            <p>
+                Your outcome updates help SkillTrack understand
+                employment, job relevance and long-term career progress.
+            </p>
+
+        </div>
+
+
+        <!-- FOLLOW-UP INFO -->
+
+        <div class="info-card">
+
+            <div class="info-icon">
+                📈
+            </div>
+
+            <div>
+
+                <strong>
+                    Longitudinal Tracking
+                </strong>
+
+                <p>
+                    SkillTrack follows your journey over time
+                    through 3, 6 and 12-month follow-ups.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form
+            method="POST"
+            class="outcome-form"
+        >
+
+
+            <!-- FOLLOW-UP -->
+
+            <section class="card">
+
+                <div class="section-header">
+
+                    <span class="number">
+                        01
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Follow-up period
+                        </h2>
+
+                        <p>
+                            Which stage of your career journey are you updating?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="period-grid">
+
+                    <label class="period-option">
+
+                        <input
+                            type="radio"
+                            name="followup_period"
+                            value="3-Month"
+                            checked
+                        >
+
+                        <span>
+
+                            <strong>
+                                3 Months
+                            </strong>
+
+                            <small>
+                                Initial employment outcome
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="period-option">
+
+                        <input
+                            type="radio"
+                            name="followup_period"
+                            value="6-Month"
+                        >
+
+                        <span>
+
+                            <strong>
+                                6 Months
+                            </strong>
+
+                            <small>
+                                Retention & career progress
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="period-option">
+
+                        <input
+                            type="radio"
+                            name="followup_period"
+                            value="12-Month"
+                        >
+
+                        <span>
+
+                            <strong>
+                                12 Months
+                            </strong>
+
+                            <small>
+                                Long-term career outcome
+                            </small>
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- EMPLOYMENT -->
+
+            <section class="card">
+
+                <div class="section-header">
+
+                    <span class="number">
+                        02
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Current employment status
+                        </h2>
+
+                        <p>
+                            What best describes your current situation?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="status-grid">
+
+
+                    <label class="status-option">
+
+                        <input
+                            type="radio"
+                            name="employment_status"
+                            value="Employed"
+                            required
+                        >
+
+                        <span class="status-icon">
+                            💼
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Employed
+                            </strong>
+
+                            <small>
+                                Working for an employer
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="status-option">
+
+                        <input
+                            type="radio"
+                            name="employment_status"
+                            value="Self-employed"
+                        >
+
+                        <span class="status-icon">
+                            🚀
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Self-employed
+                            </strong>
+
+                            <small>
+                                Running my own work/business
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="status-option">
+
+                        <input
+                            type="radio"
+                            name="employment_status"
+                            value="Unemployed"
+                        >
+
+                        <span class="status-icon">
+                            🔎
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Unemployed
+                            </strong>
+
+                            <small>
+                                Currently seeking work
+                            </small>
+
+                        </span>
+
+                    </label>
+
+
+                    <label class="status-option">
+
+                        <input
+                            type="radio"
+                            name="employment_status"
+                            value="Further Education"
+                        >
+
+                        <span class="status-icon">
+                            🎓
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Further Education
+                            </strong>
+
+                            <small>
+                                Continuing my studies
+                            </small>
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- JOB DETAILS -->
+
+            <section class="card">
+
+                <div class="section-header">
+
+                    <span class="number">
+                        03
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Employment details
+                        </h2>
+
+                        <p>
+                            Add details if you are currently working.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label>
+                            Company / Organization
+                        </label>
+
+                        <input
+                            type="text"
+                            name="company_name"
+                            placeholder="e.g. TCS"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Job Role
+                        </label>
+
+                        <input
+                            type="text"
+                            name="job_role"
+                            placeholder="e.g. Junior Developer"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Monthly Salary (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            name="monthly_salary"
+                            min="0"
+                            step="100"
+                            placeholder="e.g. 25000"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Joining Date
+                        </label>
+
+                        <input
+                            type="date"
+                            name="joining_date"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RELEVANCE -->
+
+            <section class="card">
+
+                <div class="section-header">
+
+                    <span class="number">
+                        04
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            Training relevance
+                        </h2>
+
+                        <p>
+                            How closely is your current work related to your training?
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="relevance-grid">
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="job_relevance"
+                            value="Highly Relevant"
+                        >
+
+                        <span>
+                            ✓ Highly relevant
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="job_relevance"
+                            value="Partially Relevant"
+                        >
+
+                        <span>
+                            ◐ Partially relevant
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="job_relevance"
+                            value="Not Relevant"
+                        >
+
+                        <span>
+                            × Not relevant
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+            <!-- PRIVACY -->
+
+            <div class="privacy">
+
+                <span>
+                    🔒
+                </span>
+
+                <p>
+                    Your information is used for outcome tracking
+                    and program improvement. Individual information
+                    should only be accessed by authorized users.
+                </p>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="actions">
+
+                <a
+                    href="{{ url_for('trainee.dashboard') }}"
+                    class="cancel"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                >
+                    Save Outcome →
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+        <!-- PREVIOUS OUTCOMES -->
+
+        {% if outcomes %}
+
+        <section class="previous">
+
+            <div class="previous-heading">
+
+                <p class="eyebrow">
+                    HISTORY
+                </p>
+
+                <h2>
+                    Your submitted outcomes
+                </h2>
+
+            </div>
+
+
+            <div class="history-list">
+
+                {% for outcome in outcomes %}
+
+                <div class="history-card">
+
+                    <div>
+
+                        <span class="history-period">
+                            {{ outcome.followup_period }}
+                        </span>
+
+                        <h3>
+                            {{ outcome.employment_status }}
+                        </h3>
+
+                    </div>
+
+
+                    <div class="history-details">
+
+                        {% if outcome.company_name %}
+                        <span>
+                            💼 {{ outcome.company_name }}
+                        </span>
+                        {% endif %}
+
+                        {% if outcome.job_role %}
+                        <span>
+                            👤 {{ outcome.job_role }}
+                        </span>
+                        {% endif %}
+
+                        {% if outcome.monthly_salary %}
+                        <span>
+                            ₹{{ "{:,.0f}".format(outcome.monthly_salary) }}/month
+                        </span>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+    </main>
+
+</div>
+
+
+</body>
+
+</html>

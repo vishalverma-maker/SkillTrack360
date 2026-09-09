@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Trainee Outcome Lookup — SkillTrack 360°
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: #f4f7fb;
+            color: #172033;
+            min-height: 100vh;
+        }
+
+
+        /* HEADER */
+
+        .header {
+
+            background: white;
+
+            padding: 18px 40px;
+
+            border-bottom:
+                1px solid #e5e9f2;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+        }
+
+
+        .brand-icon {
+
+            width: 46px;
+            height: 46px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2878e8,
+                    #635bff
+                );
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 800;
+        }
+
+
+        .brand-text h1 {
+
+            font-size: 21px;
+        }
+
+
+        .brand-text p {
+
+            color: #718096;
+
+            font-size: 13px;
+
+            margin-top: 3px;
+        }
+
+
+        .badge {
+
+            background: #eef5ff;
+
+            color: #2878e8;
+
+            padding: 8px 13px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        /* MAIN */
+
+        .container {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 40px;
+        }
+
+
+        .eyebrow {
+
+            color: #2878e8;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+
+            margin-bottom: 8px;
+        }
+
+
+        h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .intro {
+
+            color: #718096;
+
+            font-size: 14px;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* SEARCH */
+
+        .search-card {
+
+            background: white;
+
+            border: 1px solid #e6eaf1;
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 3px 12px
+                rgba(20,30,50,.04);
+
+            margin-bottom: 24px;
+        }
+
+
+        .search-card h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .search-card p {
+
+            color: #718096;
+
+            font-size: 12px;
+
+            margin-bottom: 16px;
+        }
+
+
+        .search-form {
+
+            display: flex;
+
+            gap: 12px;
+        }
+
+
+        .search-form input {
+
+            flex: 1;
+
+            padding: 13px 15px;
+
+            border:
+                1px solid #d9e0ea;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+
+        .search-form input:focus {
+
+            border-color: #2878e8;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(40,120,232,.10);
+        }
+
+
+        .search-form button {
+
+            border: none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2878e8,
+                    #635bff
+                );
+
+            color: white;
+
+            padding: 13px 24px;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        /* PROFILE */
+
+        .profile-card {
+
+            background: white;
+
+            border: 1px solid #e6eaf1;
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 3px 12px
+                rgba(20,30,50,.04);
+
+            margin-bottom: 24px;
+        }
+
+
+        .profile-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: flex-start;
+
+            margin-bottom: 22px;
+        }
+
+
+        .profile-name {
+
+            font-size: 23px;
+
+            font-weight: 800;
+        }
+
+
+        .skilltrack-id {
+
+            color: #2878e8;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-top: 5px;
+        }
+
+
+        .profile-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+
+        .profile-item {
+
+            background: #f8fafc;
+
+            padding: 15px;
+
+            border-radius: 10px;
+        }
+
+
+        .profile-label {
+
+            color: #718096;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+
+        .profile-value {
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        /* TIMELINE */
+
+        .timeline-card {
+
+            background: white;
+
+            border: 1px solid #e6eaf1;
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            box-shadow:
+                0 3px 12px
+                rgba(20,30,50,.04);
+        }
+
+
+        .timeline-card h3 {
+
+            font-size: 18px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .timeline-card > p {
+
+            color: #718096;
+
+            font-size: 12px;
+
+            margin-bottom: 24px;
+        }
+
+
+        .timeline {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .timeline-item {
+
+            border: 1px solid #e6eaf1;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            position: relative;
+
+            background: #ffffff;
+        }
+
+
+        .timeline-period {
+
+            display: inline-block;
+
+            background: #eef5ff;
+
+            color: #2878e8;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            margin-bottom: 15px;
+        }
+
+
+        .timeline-status {
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            margin-bottom: 14px;
+        }
+
+
+        .timeline-detail {
+
+            margin-top: 10px;
+
+            padding-top: 10px;
+
+            border-top:
+                1px solid #edf0f5;
+
+            font-size: 12px;
+
+            color: #667085;
+
+            line-height: 1.7;
+        }
+
+
+        .timeline-detail strong {
+
+            color: #172033;
+        }
+
+
+        .empty {
+
+            background: white;
+
+            border: 1px solid #e6eaf1;
+
+            border-radius: 16px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            color: #718096;
+        }
+
+
+        .not-found {
+
+            background: #fff5f5;
+
+            border: 1px solid #f1c4c4;
+
+            color: #b42318;
+
+            border-radius: 12px;
+
+            padding: 16px;
+
+            margin-top: 15px;
+
+            font-size: 13px;
+        }
+
+
+        @media (max-width: 800px) {
+
+            .container {
+                padding: 24px;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            ST
+        </div>
+
+        <div class="brand-text">
+
+            <h1>
+                SkillTrack 360°
+            </h1>
+
+            <p>
+                Government Skill Development Analytics
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="badge">
+        GOVERNMENT ANALYTICS
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <div class="eyebrow">
+        LONGITUDINAL TRACKING
+    </div>
+
+
+    <h2>
+        Trainee Outcome Lookup
+    </h2>
+
+
+    <p class="intro">
+
+        Search a SkillTrack ID to view training,
+        employment and career outcomes over time.
+
+    </p>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-card">
+
+        <h3>
+            🔍 Search Trainee
+        </h3>
+
+        <p>
+            Enter the persistent SkillTrack ID assigned to a trainee.
+        </p>
+
+
+        <form
+            class="search-form"
+            method="GET"
+            action="{{ url_for('government.trainee_lookup_page') }}"
+        >
+
+            <input
+                type="text"
+                name="skilltrack_id"
+                value="{{ skilltrack_id }}"
+                placeholder="Example: ST-10001"
+                required
+            >
+
+            <button type="submit">
+                Search Outcome
+            </button>
+
+        </form>
+
+
+        {% if skilltrack_id and not trainee %}
+
+            <div class="not-found">
+
+                ⚠️ No trainee was found with SkillTrack ID:
+
+                <strong>
+                    {{ skilltrack_id }}
+                </strong>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    {% if trainee %}
+
+
+    <!-- TRAINEE PROFILE -->
+
+    <section class="profile-card">
+
+        <div class="profile-header">
+
+            <div>
+
+                <div class="profile-name">
+                    {{ trainee.full_name }}
+                </div>
+
+                <div class="skilltrack-id">
+                    SkillTrack ID: {{ trainee.skilltrack_id }}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-grid">
+
+
+            <div class="profile-item">
+
+                <div class="profile-label">
+                    District
+                </div>
+
+                <div class="profile-value">
+                    {{ trainee.district or "Not provided" }}
+                </div>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <div class="profile-label">
+                    Education
+                </div>
+
+                <div class="profile-value">
+                    {{ trainee.education or "Not provided" }}
+                </div>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <div class="profile-label">
+                    Training Program
+                </div>
+
+                <div class="profile-value">
+                    {{ trainee.training_program or "Not provided" }}
+                </div>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <div class="profile-label">
+                    Training Provider
+                </div>
+
+                <div class="profile-value">
+                    {{ trainee.training_provider or "Not provided" }}
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- OUTCOME TIMELINE -->
+
+    <section class="timeline-card">
+
+        <h3>
+            📈 Career Outcome Timeline
+        </h3>
+
+        <p>
+            Longitudinal view of employment outcomes after training.
+        </p>
+
+
+        <div class="timeline">
+
+
+            {% for period in ["3-month", "6-month", "12-month"] %}
+
+                {% set ns = namespace(found=None) %}
+
+                {% for outcome in outcomes %}
+
+                    {% if outcome.followup_period|lower == period %}
+
+                        {% set ns.found = outcome %}
+
+                    {% endif %}
+
+                {% endfor %}
+
+
+                <div class="timeline-item">
+
+
+                    <span class="timeline-period">
+                        {{ period|upper }}
+                    </span>
+
+
+                    {% if ns.found %}
+
+                        <div class="timeline-status">
+
+                            {% if ns.found.employment_status|lower
+                                in ["employed", "self-employed", "self employed"] %}
+
+                                🟢 {{ ns.found.employment_status }}
+
+                            {% elif ns.found.employment_status|lower
+                                == "unemployed" %}
+
+                                🔴 Unemployed
+
+                            {% else %}
+
+                                🔵 {{ ns.found.employment_status }}
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="timeline-detail">
+
+                            {% if ns.found.job_role %}
+
+                                <strong>
+                                    Job:
+                                </strong>
+
+                                {{ ns.found.job_role }}
+
+                                <br>
+
+                            {% endif %}
+
+
+                            {% if ns.found.company_name %}
+
+                                <strong>
+                                    Organization:
+                                </strong>
+
+                                {{ ns.found.company_name }}
+
+                                <br>
+
+                            {% endif %}
+
+
+                            {% if ns.found.monthly_salary %}
+
+                                <strong>
+                                    Monthly Salary:
+                                </strong>
+
+                                ₹{{ "{:,.0f}".format(
+                                    ns.found.monthly_salary
+                                ) }}
+
+                                <br>
+
+                            {% endif %}
+
+
+                            {% if ns.found.job_relevance %}
+
+                                <strong>
+                                    Job Relevance:
+                                </strong>
+
+                                {{ ns.found.job_relevance }}
+
+                            {% endif %}
+
+                        </div>
+
+
+                    {% else %}
+
+                        <div class="timeline-status">
+
+                            ⚪ Pending
+
+                        </div>
+
+
+                        <div class="timeline-detail">
+
+                            This follow-up has not been recorded yet.
+
+                        </div>
+
+                    {% endif %}
+
+
+                </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+
+    {% endif %}
+
+
+</main>
+
+
+</body>
+
+</html>

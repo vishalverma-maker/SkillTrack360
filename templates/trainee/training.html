@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Training — SkillTrack 360°</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard.css') }}"
+    >
+
+    <style>
+        .training-page {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            margin-bottom: 28px;
+        }
+
+        .page-header .eyebrow {
+            color: #1769e0;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .page-header h1 {
+            margin: 6px 0;
+            font-size: 32px;
+        }
+
+        .page-header p {
+            color: #6b7280;
+        }
+
+        .training-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .training-card h2 {
+            margin-top: 0;
+            margin-bottom: 22px;
+        }
+
+        .training-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .training-item {
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .training-item span {
+            display: block;
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 6px;
+        }
+
+        .training-item strong {
+            font-size: 15px;
+            color: #111827;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #effaf3;
+            color: #18794e;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .edit-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 18px;
+            border-radius: 9px;
+            background: #1769e0;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .empty-state {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 700px) {
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                ST
+            </div>
+
+            <div>
+                <h2>SkillTrack</h2>
+                <span>360°</span>
+            </div>
+        </div>
+
+        <nav>
+
+            <a
+                href="{{ url_for('trainee.dashboard') }}"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a
+                href="{{ url_for('trainee.training') }}"
+                class="nav-item active"
+            >
+                <span>🎓</span>
+                My Training
+            </a>
+
+            <a
+                href="{{ url_for('trainee.outcomes') }}"
+                class="nav-item"
+            >
+                <span>📈</span>
+                Career Outcomes
+            </a>
+
+            <a
+                href="{{ url_for('trainee.followups') }}"
+                class="nav-item"
+            >
+                <span>📅</span>
+                Follow-ups
+            </a>
+
+            <a
+                href="{{ url_for('trainee.profile') }}"
+                class="nav-item"
+            >
+                <span>👤</span>
+                My Profile
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="{{ url_for('auth.logout') }}"
+                class="logout"
+            >
+                ↪ Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                SkillTrack <span>360°</span>
+            </div>
+
+            <div class="user-menu">
+
+                <div class="avatar">
+                    {{ trainee.full_name[0].upper() }}
+                </div>
+
+                <div class="user-info">
+                    <strong>{{ trainee.full_name }}</strong>
+                    <small>Trainee</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="training-page">
+
+            <section class="page-header">
+
+                <p class="eyebrow">
+                    TRAINING PROFILE
+                </p>
+
+                <h1>
+                    My Training 🎓
+                </h1>
+
+                <p>
+                    View your skill-development program and training progress.
+                </p>
+
+            </section>
+
+
+            {% if trainee.training_program %}
+
+            <section class="training-card">
+
+                <h2>
+                    Training Information
+                </h2>
+
+                <div class="training-grid">
+
+                    <div class="training-item">
+                        <span>Training Program</span>
+                        <strong>
+                            {{ trainee.training_program }}
+                        </strong>
+                    </div>
+
+                    <div class="training-item">
+                        <span>Training Provider</span>
+                        <strong>
+                            {{ trainee.training_provider or "Not added" }}
+                        </strong>
+                    </div>
+
+                    <div class="training-item">
+                        <span>Training Start Date</span>
+                        <strong>
+                            {{ trainee.training_start_date or "Not added" }}
+                        </strong>
+                    </div>
+
+                    <div class="training-item">
+                        <span>Completion Date</span>
+                        <strong>
+                            {{ trainee.training_completion_date or "Not added" }}
+                        </strong>
+                    </div>
+
+                    <div class="training-item">
+                        <span>Certificate Status</span>
+
+                        <strong>
+                            <span class="status-badge">
+                                {{ trainee.certificate_status or "Pending" }}
+                            </span>
+                        </strong>
+                    </div>
+
+                    <div class="training-item">
+                        <span>SkillTrack ID</span>
+
+                        <strong>
+                            {{ trainee.skilltrack_id }}
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="{{ url_for('trainee.profile') }}"
+                    class="edit-button"
+                >
+                    Edit Training Information →
+                </a>
+
+            </section>
+
+            {% else %}
+
+            <section class="training-card">
+
+                <h2>
+                    No Training Information Yet
+                </h2>
+
+                <p class="empty-state">
+                    You have not added your training information yet.
+                    Add your training program and provider to start
+                    tracking your career journey.
+                </p>
+
+                <a
+                    href="{{ url_for('trainee.profile') }}"
+                    class="edit-button"
+                >
+                    Add Training Information →
+                </a>
+
+            </section>
+
+            {% endif %}
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

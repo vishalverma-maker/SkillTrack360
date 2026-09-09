@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Follow-ups — SkillTrack 360°</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                ST
+            </div>
+
+            <div>
+
+                <h2>SkillTrack</h2>
+
+                <span>360°</span>
+
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="{{ url_for('trainee.dashboard') }}"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="{{ url_for('trainee.profile') }}"
+                class="nav-item"
+            >
+                <span>🎓</span>
+                My Training
+            </a>
+
+
+            <a
+                href="{{ url_for('trainee.outcomes') }}"
+                class="nav-item"
+            >
+                <span>📈</span>
+                Career Outcomes
+            </a>
+
+
+            <a
+                href="{{ url_for('trainee.followups') }}"
+                class="nav-item active"
+            >
+                <span>📅</span>
+                Follow-ups
+            </a>
+
+
+            <a
+                href="{{ url_for('trainee.profile') }}"
+                class="nav-item"
+            >
+                <span>👤</span>
+                My Profile
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="{{ url_for('auth.logout') }}"
+                class="logout"
+            >
+                ↪ Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                SkillTrack
+                <span>360°</span>
+            </div>
+
+
+            <div class="user-menu">
+
+                <div class="avatar">
+
+                    {{ trainee.full_name[0].upper() }}
+
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong>
+                        {{ trainee.full_name }}
+                    </strong>
+
+                    <small>
+                        Trainee
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             PAGE HEADER
+        ========================== -->
+
+        <section class="welcome">
+
+            <div>
+
+                <p class="eyebrow">
+                    FOLLOW-UP CENTER
+                </p>
+
+
+                <h1>
+                    Your Career Follow-ups 📅
+                </h1>
+
+
+                <p class="subtitle">
+                    SkillTrack follows your career journey
+                    at 3, 6 and 12 months after training.
+                </p>
+
+            </div>
+
+
+            <div class="skilltrack-id">
+
+                <span>
+                    SkillTrack ID
+                </span>
+
+                <strong>
+                    {{ trainee.skilltrack_id }}
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             INFORMATION BANNER
+        ========================== -->
+
+        <section class="card">
+
+            <div
+                style="
+                    display:flex;
+                    gap:20px;
+                    align-items:center;
+                    padding:10px;
+                "
+            >
+
+                <div
+                    style="
+                        font-size:32px;
+                    "
+                >
+                    📊
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Why follow-ups matter
+                    </h2>
+
+                    <p>
+                        Your updates help SkillTrack understand
+                        employment, retention, job relevance and
+                        long-term career progress.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FOLLOW-UP CARDS
+        ========================== -->
+
+        <section
+            class="stats-grid"
+            style="margin-top:24px;"
+        >
+
+
+            <!-- 3 MONTH -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon training">
+                    3
+                </div>
+
+
+                <div>
+
+                    <span class="stat-label">
+                        3-MONTH FOLLOW-UP
+                    </span>
+
+
+                    {% if outcome_3 %}
+
+                        <h3>
+                            ✓ Completed
+                        </h3>
+
+                        <span class="status success">
+
+                            {{ outcome_3.employment_status }}
+
+                        </span>
+
+                    {% else %}
+
+                        <h3>
+                            Pending
+                        </h3>
+
+                        <span class="status pending">
+                            Employment outcome
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 6 MONTH -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon certificate">
+                    6
+                </div>
+
+
+                <div>
+
+                    <span class="stat-label">
+                        6-MONTH FOLLOW-UP
+                    </span>
+
+
+                    {% if outcome_6 %}
+
+                        <h3>
+                            ✓ Completed
+                        </h3>
+
+                        <span class="status success">
+
+                            {{ outcome_6.employment_status }}
+
+                        </span>
+
+                    {% else %}
+
+                        <h3>
+                            Pending
+                        </h3>
+
+                        <span class="status pending">
+                            Retention & career progress
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+
+            <!-- 12 MONTH -->
+
+            <div class="stat-card">
+
+                <div class="stat-icon employment">
+                    12
+                </div>
+
+
+                <div>
+
+                    <span class="stat-label">
+                        12-MONTH FOLLOW-UP
+                    </span>
+
+
+                    {% if outcome_12 %}
+
+                        <h3>
+                            ✓ Completed
+                        </h3>
+
+                        <span class="status success">
+
+                            {{ outcome_12.employment_status }}
+
+                        </span>
+
+                    {% else %}
+
+                        <h3>
+                            Pending
+                        </h3>
+
+                        <span class="status pending">
+                            Long-term career outcome
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             LONGITUDINAL TIMELINE
+        ========================== -->
+
+        <section
+            class="card journey-card"
+            style="margin-top:24px;"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="eyebrow">
+                        LONGITUDINAL TRACKING
+                    </p>
+
+                    <h2>
+                        Your Follow-up Journey
+                    </h2>
+
+                </div>
+
+
+                <span class="timeline-badge">
+                    3 → 6 → 12 Months
+                </span>
+
+            </div>
+
+
+
+            <div class="timeline">
+
+
+                <!-- 3 MONTH -->
+
+                <div
+                    class="
+                    timeline-step
+                    {% if outcome_3 %}completed{% endif %}
+                    "
+                >
+
+                    <div class="timeline-dot">
+
+                        {% if outcome_3 %}
+                            ✓
+                        {% else %}
+                            3
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <strong>
+                            3-Month Follow-up
+                        </strong>
+
+
+                        {% if outcome_3 %}
+
+                            <span>
+                                Employment outcome recorded
+                            </span>
+
+                        {% else %}
+
+                            <span>
+                                Initial employment outcome
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-line"></div>
+
+
+
+                <!-- 6 MONTH -->
+
+                <div
+                    class="
+                    timeline-step
+                    {% if outcome_6 %}completed{% endif %}
+                    "
+                >
+
+                    <div class="timeline-dot">
+
+                        {% if outcome_6 %}
+                            ✓
+                        {% else %}
+                            6
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <strong>
+                            6-Month Follow-up
+                        </strong>
+
+
+                        {% if outcome_6 %}
+
+                            <span>
+                                Retention and career progress recorded
+                            </span>
+
+                        {% else %}
+
+                            <span>
+                                Retention & career progress
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-line"></div>
+
+
+
+                <!-- 12 MONTH -->
+
+                <div
+                    class="
+                    timeline-step
+                    {% if outcome_12 %}completed{% endif %}
+                    "
+                >
+
+                    <div class="timeline-dot">
+
+                        {% if outcome_12 %}
+                            ✓
+                        {% else %}
+                            12
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <strong>
+                            12-Month Follow-up
+                        </strong>
+
+
+                        {% if outcome_12 %}
+
+                            <span>
+                                Long-term career outcome recorded
+                            </span>
+
+                        {% else %}
+
+                            <span>
+                                Long-term career outcome
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PRIVACY NOTICE
+        ========================== -->
+
+        <section
+            class="card"
+            style="margin-top:24px;"
+        >
+
+            <div
+                style="
+                    display:flex;
+                    gap:16px;
+                    align-items:flex-start;
+                "
+            >
+
+                <div style="font-size:24px;">
+                    🔒
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Your information is protected
+                    </h3>
+
+
+                    <p>
+                        Follow-up information is collected
+                        with your consent and used to understand
+                        training outcomes and improve future
+                        skill-development programs.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</body>
+
+</html>

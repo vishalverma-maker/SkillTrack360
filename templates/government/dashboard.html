@@ -1,0 +1,3836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Government Analytics — SkillTrack 360°
+    </title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background: #f4f7fb;
+
+            color: #172033;
+
+            min-height: 100vh;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .header {
+
+            background: white;
+
+            padding: 18px 40px;
+
+            border-bottom: 1px solid #e5e9f2;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+        }
+
+
+        .brand-icon {
+
+            width: 46px;
+
+            height: 46px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2878e8,
+                    #635bff
+                );
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 800;
+
+            font-size: 14px;
+
+        }
+
+
+        .brand-text h1 {
+
+            font-size: 21px;
+
+        }
+
+
+        .brand-text p {
+
+            color: #718096;
+
+            font-size: 13px;
+
+            margin-top: 3px;
+
+        }
+
+
+        .government-badge {
+
+            background: #eef5ff;
+
+            color: #2878e8;
+
+            padding: 9px 14px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           MAIN
+        ====================================================== */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1500px;
+
+            margin: auto;
+
+            padding: 32px 40px 50px;
+
+        }
+
+
+        .page-intro {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            gap: 20px;
+
+            margin-bottom: 26px;
+
+        }
+
+
+        .eyebrow {
+
+            color: #2878e8;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.3px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .page-intro h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .page-intro p {
+
+            color: #718096;
+
+            font-size: 14px;
+
+        }
+
+
+        .demo-badge {
+
+            background: #fff8e6;
+
+            color: #9a6700;
+
+            border: 1px solid #f2dfaa;
+
+            padding: 8px 13px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =====================================================
+           KPI
+        ====================================================== */
+
+        .kpi-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .kpi-card {
+
+            background: white;
+
+            border: 1px solid #e6eaf1;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 3px 12px
+                rgba(20, 30, 50, 0.04);
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        .kpi-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+
+            height: 80px;
+
+            border-radius: 50%;
+
+            background: #eef5ff;
+
+            right: -30px;
+
+            top: -30px;
+
+        }
+
+
+        .kpi-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .kpi-title {
+
+            color: #718096;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .kpi-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            border-radius: 10px;
+
+            background: #eef5ff;
+
+            color: #2878e8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .kpi-value {
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+            margin-top: 16px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .kpi-sub {
+
+            color: #8a94a6;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* =====================================================
+           PANELS
+        ====================================================== */
+
+        .panel {
+
+            background: white;
+
+            border: 1px solid #e6eaf1;
+
+            border-radius: 16px;
+
+            padding: 23px;
+
+            box-shadow:
+                0 3px 12px
+                rgba(20, 30, 50, 0.04);
+
+        }
+
+
+        .panel-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .panel-header h3 {
+
+            font-size: 17px;
+
+        }
+
+
+        .panel-header p {
+
+            color: #8a94a6;
+
+            font-size: 12px;
+
+            margin-top: 5px;
+
+        }
+
+
+        .panel-tag {
+
+            background: #f4f7fb;
+
+            color: #667085;
+
+            padding: 6px 10px;
+
+            border-radius: 8px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =====================================================
+           CHART GRID
+        ====================================================== */
+
+        .chart-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .chart-container {
+
+            height: 270px;
+
+            position: relative;
+
+        }
+
+
+        /* =====================================================
+           INSIGHTS
+        ====================================================== */
+
+        .insights-panel {
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .insight-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .insight {
+
+            padding: 18px;
+
+            border-radius: 13px;
+
+            border: 1px solid;
+
+        }
+
+
+        .insight.success {
+
+            background: #f2fbf6;
+
+            border-color: #ccebd8;
+
+        }
+
+
+        .insight.warning {
+
+            background: #fffaf0;
+
+            border-color: #f5e3b0;
+
+        }
+
+
+        .insight.info {
+
+            background: #f3f7ff;
+
+            border-color: #d6e4ff;
+
+        }
+
+
+        .insight-icon {
+
+            font-size: 23px;
+
+            margin-bottom: 11px;
+
+        }
+
+
+        .insight h4 {
+
+            font-size: 14px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .insight p {
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            color: #718096;
+
+        }
+
+
+        /* =====================================================
+           INTELLIGENCE SECTION
+        ====================================================== */
+
+        .section-heading {
+
+            margin: 36px 0 16px;
+
+        }
+
+
+        .section-heading .eyebrow {
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .section-heading h2 {
+
+            font-size: 22px;
+
+        }
+
+
+        .section-heading p {
+
+            color: #718096;
+
+            font-size: 13px;
+
+            margin-top: 5px;
+
+        }
+
+
+        /* =====================================================
+           RANKING CARDS
+        ====================================================== */
+
+        .ranking-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .ranking-card {
+
+            background: white;
+
+            border: 1px solid #e6eaf1;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 3px 12px
+                rgba(20, 30, 50, 0.04);
+
+        }
+
+
+        .ranking-top {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .rank-number {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 12px;
+
+            background: #eef5ff;
+
+            color: #2878e8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 800;
+
+            font-size: 16px;
+
+        }
+
+
+        .ranking-name {
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+        }
+
+
+        .ranking-label {
+
+            color: #8a94a6;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+
+        }
+
+
+        .score {
+
+            margin-left: auto;
+
+            text-align: right;
+
+        }
+
+
+        .score-value {
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+        }
+
+
+        .score-label {
+
+            color: #8a94a6;
+
+            font-size: 10px;
+
+        }
+
+
+        .metric-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+        }
+
+
+        .metric {
+
+            background: #f8fafc;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .metric-label {
+
+            color: #8a94a6;
+
+            font-size: 10px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .metric-value {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           TABLES
+        ====================================================== */
+
+        .table-panel {
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .table-wrapper {
+
+            overflow-x: auto;
+
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 780px;
+
+        }
+
+
+        th {
+
+            background: #f8fafc;
+
+            color: #667085;
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .5px;
+
+            padding: 13px;
+
+            text-align: left;
+
+            border-bottom: 1px solid #e8ecf2;
+
+        }
+
+
+        td {
+
+            padding: 15px 13px;
+
+            font-size: 13px;
+
+            border-bottom: 1px solid #edf0f5;
+
+        }
+
+
+        tbody tr:hover {
+
+            background: #fafcff;
+
+        }
+
+
+        .provider-name {
+
+            font-weight: 700;
+
+        }
+
+
+        .small-text {
+
+            font-size: 11px;
+
+            color: #8a94a6;
+
+            margin-top: 3px;
+
+        }
+
+
+        .score-pill {
+
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            background: #eef5ff;
+
+            color: #2878e8;
+
+            font-weight: 700;
+
+            font-size: 11px;
+
+        }
+
+
+        .good-pill {
+
+            background: #e8f8ef;
+
+            color: #197044;
+
+        }
+
+
+        .attention-pill {
+
+            background: #fff0f0;
+
+            color: #b42318;
+
+        }
+
+
+        .status-pill {
+
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+        }
+
+
+        .status-employed {
+
+            background: #e8f8ef;
+
+            color: #197044;
+
+        }
+
+
+        .status-unemployed {
+
+            background: #fff0f0;
+
+            color: #b42318;
+
+        }
+
+
+        .status-other {
+
+            background: #eef3ff;
+
+            color: #315bb5;
+
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+        ====================================================== */
+
+        .empty-state {
+
+            text-align: center;
+
+            padding: 35px 20px;
+
+            color: #718096;
+
+        }
+
+
+        .empty-icon {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .empty-state h4 {
+
+            color: #344054;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .empty-state p {
+
+            font-size: 12px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .footer-note {
+
+            text-align: center;
+
+            color: #98a2b3;
+
+            font-size: 11px;
+
+            margin-top: 30px;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 1100px) {
+
+            .kpi-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+            .ranking-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .insight-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .header {
+
+                padding: 16px 20px;
+
+            }
+
+            .government-badge {
+
+                display: none;
+
+            }
+
+            .container {
+
+                padding:
+                    25px
+                    20px
+                    40px;
+
+            }
+
+            .chart-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .page-intro {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .kpi-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .insight-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .metric-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .page-intro h2 {
+
+                font-size: 25px;
+
+            }
+
+            .panel {
+
+                padding: 17px;
+
+            }
+
+            .chart-container {
+
+                height: 240px;
+
+            }
+
+        }
+        /* =====================================================
+   SKILL GAP INTELLIGENCE
+===================================================== */
+
+.section-card {
+    background: #ffffff;
+    border: 1px solid #e6eaf1;
+    border-radius: 16px;
+    padding: 23px;
+    margin-bottom: 24px;
+    box-shadow: 0 3px 12px rgba(20, 30, 50, 0.04);
+}
+
+.skill-gap-section .section-heading {
+    margin: 0 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.section-eyebrow {
+    color: #2878e8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    margin-bottom: 5px;
+}
+
+.skill-gap-section .section-heading h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.skill-gap-section .section-heading p {
+    color: #718096;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.section-badge {
+    background: #fff8e6;
+    color: #9a6700;
+    border: 1px solid #f2dfaa;
+    padding: 7px 11px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.skill-gap-intro {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    background: #f8fafc;
+    border: 1px solid #e8ecf2;
+    border-radius: 11px;
+}
+
+.gap-intro-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef5ff;
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.skill-gap-intro strong {
+    font-size: 13px;
+    color: #172033;
+}
+
+.skill-gap-intro p {
+    color: #718096;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 3px;
+}
+
+/* Skill gap table */
+
+.skill-gap-table {
+    min-width: 0;
+    width: 100%;
+}
+
+.skill-gap-table th {
+    background: #f8fafc;
+    padding: 11px 12px;
+    font-size: 9px;
+}
+
+.skill-gap-table td {
+    padding: 13px 12px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.skill-gap-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.skill-gap-table tbody tr:hover {
+    background: #fafcff;
+}
+
+.skill-name {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+}
+
+.skill-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f7ff;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.metric-cell {
+    min-width: 115px;
+}
+
+.metric-cell strong {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.mini-progress {
+    width: 100%;
+    height: 5px;
+    background: #edf0f5;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.demand-fill {
+    background: #2878e8;
+}
+
+.supply-fill {
+    background: #635bff;
+}
+
+/* Gap */
+
+.gap-value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+    padding: 5px 8px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.gap-high {
+    background: #fff0f0;
+    color: #b42318;
+}
+
+.gap-medium {
+    background: #fff8e6;
+    color: #9a6700;
+}
+
+.gap-low {
+    background: #e8f8ef;
+    color: #197044;
+}
+
+.gap-review {
+    background: #eef3ff;
+    color: #315bb5;
+}
+
+/* Priority */
+
+.priority-badge {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.priority-high {
+    background: #fff0f0;
+    color: #b42318;
+}
+
+.priority-medium {
+    background: #fff8e6;
+    color: #9a6700;
+}
+
+.priority-low {
+    background: #e8f8ef;
+    color: #197044;
+}
+
+.priority-review {
+    background: #eef3ff;
+    color: #315bb5;
+}
+
+.action-text {
+    color: #344054;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Government action insight */
+
+.gap-recommendation {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: #f3f7ff;
+    border: 1px solid #d6e4ff;
+    border-radius: 11px;
+}
+
+.recommendation-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 9px;
+    font-size: 17px;
+}
+
+.gap-recommendation strong {
+    font-size: 12px;
+    color: #172033;
+}
+
+.gap-recommendation p {
+    color: #667085;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 3px;
+}
+
+/* Keep the following Employment Summary visually separated */
+
+.skill-gap-section + .table-panel {
+    margin-top: 4px;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================== -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            ST
+        </div>
+
+        <div class="brand-text">
+
+            <h1>
+                SkillTrack 360°
+            </h1>
+
+            <p>
+                Government Skill Development Analytics
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="government-badge">
+        GOVERNMENT ANALYTICS
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+<div style="
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:20px;
+">
+
+    <a
+        href="{{ url_for('government.trainee_lookup_page') }}"
+        style="
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            background:linear-gradient(135deg,#2878e8,#635bff);
+            color:white;
+            padding:11px 17px;
+            border-radius:10px;
+            text-decoration:none;
+            font-size:12px;
+            font-weight:700;
+            box-shadow:0 4px 12px rgba(40,120,232,.18);
+        "
+    >
+        🔍 Lookup Trainee Outcome
+    </a>
+
+</div>
+<!-- =========================================================
+     PAGE INTRO
+========================================================== -->
+
+<section class="page-intro">
+
+    <div>
+
+        <div class="eyebrow">
+            POLICY INTELLIGENCE
+        </div>
+
+        <h2>
+            Program Outcome Dashboard
+        </h2>
+
+        <p>
+            Track employment outcomes and identify high-performing
+            training providers and programs.
+        </p>
+
+    </div>
+
+
+    <div class="demo-badge">
+        ⚠ Demo / Synthetic Data
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     KPI CARDS
+========================================================== -->
+
+<section class="kpi-grid">
+
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-title">
+                Total Trainees
+            </span>
+
+            <div class="kpi-icon">
+                👥
+            </div>
+
+        </div>
+
+        <div class="kpi-value">
+            {{ total_trainees }}
+        </div>
+
+        <div class="kpi-sub">
+            Registered in SkillTrack
+        </div>
+
+    </div>
+
+
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-title">
+                Employment Rate
+            </span>
+
+            <div class="kpi-icon">
+                💼
+            </div>
+
+        </div>
+
+        <div class="kpi-value">
+            {{ employment_rate }}%
+        </div>
+
+        <div class="kpi-sub">
+            Employed + self-employed
+        </div>
+
+    </div>
+
+
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-title">
+                Average Salary
+            </span>
+
+            <div class="kpi-icon">
+                ₹
+            </div>
+
+        </div>
+
+        <div class="kpi-value">
+            ₹{{ "{:,.0f}".format(average_salary) }}
+        </div>
+
+        <div class="kpi-sub">
+            Average monthly salary
+        </div>
+
+    </div>
+
+
+
+    <div class="kpi-card">
+
+        <div class="kpi-top">
+
+            <span class="kpi-title">
+                Outcomes Recorded
+            </span>
+
+            <div class="kpi-icon">
+                📊
+            </div>
+
+        </div>
+
+        <div class="kpi-value">
+            {{ total_outcomes }}
+        </div>
+
+        <div class="kpi-sub">
+            Longitudinal records
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     CORE ANALYTICS
+========================================================== -->
+
+<section class="chart-grid">
+
+
+    <!-- EMPLOYMENT -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Employment Outcomes
+                </h3>
+
+                <p>
+                    Distribution of recorded outcomes
+                </p>
+
+            </div>
+
+            <span class="panel-tag">
+                OUTCOMES
+            </span>
+
+        </div>
+
+        <div class="chart-container">
+
+            <canvas id="employmentChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RELEVANCE -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Training → Job Relevance
+                </h3>
+
+                <p>
+                    Alignment between training and employment
+                </p>
+
+            </div>
+
+            <span class="panel-tag">
+                RELEVANCE
+            </span>
+
+        </div>
+
+        <div class="chart-container">
+
+            <canvas id="relevanceChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FOLLOWUP -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Longitudinal Follow-up
+                </h3>
+
+                <p>
+                    Completed 3, 6 and 12-month follow-ups
+                </p>
+
+            </div>
+
+            <span class="panel-tag">
+                TRACKING
+            </span>
+
+        </div>
+
+        <div class="chart-container">
+
+            <canvas id="followupChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SALARY -->
+
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    Salary Snapshot
+                </h3>
+
+                <p>
+                    Current recorded salary data
+                </p>
+
+            </div>
+
+            <span class="panel-tag">
+                MONTHLY
+            </span>
+
+        </div>
+
+        <div class="chart-container">
+
+            <canvas id="salaryChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     AUTOMATED INSIGHTS
+========================================================== -->
+
+<section class="panel insights-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3>
+                🧠 SkillTrack Insights
+            </h3>
+
+            <p>
+                Automated observations from recorded outcome data
+            </p>
+
+        </div>
+
+        <span class="panel-tag">
+            ANALYTICS
+        </span>
+
+    </div>
+
+
+    <div class="insight-grid">
+
+
+        <div class="insight success">
+
+            <div class="insight-icon">
+                📈
+            </div>
+
+            <h4>
+                Employment Performance
+            </h4>
+
+            <p>
+
+                {% if employment_rate >= 70 %}
+
+                    Current recorded employment performance
+                    is strong at {{ employment_rate }}%.
+
+                {% elif employment_rate >= 50 %}
+
+                    Employment performance is moderate at
+                    {{ employment_rate }}%.
+
+                {% else %}
+
+                    Employment performance is currently low.
+                    Program intervention may be required.
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+
+
+        <div class="insight info">
+
+            <div class="insight-icon">
+                🎯
+            </div>
+
+            <h4>
+                Training Alignment
+            </h4>
+
+            <p>
+
+                {{ highly_relevant }}
+                outcome(s) are currently marked as
+                highly relevant to the training received.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="insight warning">
+
+            <div class="insight-icon">
+                🔔
+            </div>
+
+            <h4>
+                Follow-up Attention
+            </h4>
+
+            <p>
+
+                {% if six_month == 0 %}
+
+                    6-month follow-up data is not yet available.
+                    Continued longitudinal tracking is recommended.
+
+                {% else %}
+
+                    6-month follow-up data is available for
+                    {{ six_month }} record(s).
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     SKILLTRACK AI POLICY ADVISOR
+========================================================== -->
+
+<section class="panel" style="
+    margin-bottom:24px;
+    background:linear-gradient(135deg,#f5f8ff,#ffffff);
+    border:1px solid #dbe5ff;
+">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3 style="
+                font-size:18px;
+                margin:0;
+            ">
+                🤖 SkillTrack AI Policy Advisor
+            </h3>
+
+            <p style="
+                color:#718096;
+                font-size:12px;
+                margin-top:5px;
+            ">
+                Explainable recommendations generated from
+                employment outcome data
+            </p>
+
+        </div>
+
+        <span style="
+            background:#eef5ff;
+            color:#2878e8;
+            padding:6px 10px;
+            border-radius:20px;
+            font-size:10px;
+            font-weight:700;
+        ">
+            AI / RULE-BASED MVP
+        </span>
+
+    </div>
+
+
+    <div style="
+        padding:16px;
+        margin-bottom:18px;
+        background:#f3f7ff;
+        border:1px solid #d6e4ff;
+        border-radius:12px;
+    ">
+
+        <strong>
+            🧠 From outcome data → government action
+        </strong>
+
+        <p style="
+            margin-top:6px;
+            color:#718096;
+            font-size:12px;
+            line-height:1.6;
+        ">
+
+            SkillTrack analyzes employment, salary, job relevance,
+            follow-up, district and provider signals to identify
+            risks, strengths and recommended interventions.
+
+        </p>
+
+    </div>
+
+
+    {% if ai_insights %}
+
+    <div style="
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:15px;
+    ">
+
+        {% for insight in ai_insights %}
+
+        <div style="
+            padding:18px;
+            border-radius:13px;
+            border:1px solid
+            {% if insight.type == 'danger' %}
+                #f1c4c4
+            {% elif insight.type == 'warning' %}
+                #f1dfad
+            {% elif insight.type == 'success' %}
+                #ccebd8
+            {% else %}
+                #d6e4ff
+            {% endif %};
+
+            background:
+            {% if insight.type == 'danger' %}
+                #fff5f5
+            {% elif insight.type == 'warning' %}
+                #fffaf0
+            {% elif insight.type == 'success' %}
+                #f2fbf6
+            {% else %}
+                #f3f7ff
+            {% endif %};
+        ">
+
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:9px;
+                margin-bottom:10px;
+            ">
+
+                <span style="font-size:20px;">
+
+                    {% if insight.type == "danger" %}
+                        🔴
+                    {% elif insight.type == "warning" %}
+                        🟡
+                    {% elif insight.type == "success" %}
+                        🟢
+                    {% else %}
+                        🔵
+                    {% endif %}
+
+                </span>
+
+                <strong style="font-size:14px;">
+                    {{ insight.title }}
+                </strong>
+
+            </div>
+
+
+            <p style="
+                color:#667085;
+                font-size:12px;
+                line-height:1.6;
+                margin-bottom:12px;
+            ">
+                {{ insight.message }}
+            </p>
+
+
+            <div style="
+                background:white;
+                padding:11px;
+                border-radius:9px;
+                font-size:11px;
+                line-height:1.5;
+            ">
+
+                <strong>
+                    Recommended action:
+                </strong>
+
+                <br>
+
+                {{ insight.action }}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div style="
+        padding:20px;
+        text-align:center;
+        color:#718096;
+    ">
+        🤖 AI insights will appear when outcome data is available.
+    </div>
+
+    {% endif %}
+
+</section>
+
+<!-- =========================================================
+     PROVIDER + PROGRAM INTELLIGENCE
+========================================================== -->
+
+<div class="section-heading">
+
+    <div class="eyebrow">
+        PERFORMANCE INTELLIGENCE
+    </div>
+
+    <h2>
+        Training Provider & Program Performance
+    </h2>
+
+    <p>
+        Compare training outcomes to identify effective programs
+        and providers requiring intervention.
+    </p>
+
+</div>
+
+
+
+<!-- =========================================================
+     TOP PERFORMERS
+========================================================== -->
+
+<section class="ranking-grid">
+
+
+    <!-- TOP PROVIDER -->
+
+    <div class="ranking-card">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    🏆 Top Training Provider
+                </h3>
+
+                <p>
+                    Highest calculated performance score
+                </p>
+
+            </div>
+
+            <span class="panel-tag">
+                PROVIDER
+            </span>
+
+        </div>
+
+
+        {% if provider_stats %}
+
+            {% set top_provider = provider_stats[0] %}
+
+            <div class="ranking-top">
+
+                <div class="rank-number">
+                    #1
+                </div>
+
+                <div>
+
+                    <div class="ranking-name">
+                        {{ top_provider.provider }}
+                    </div>
+
+                    <div class="ranking-label">
+                        {{ top_provider.trainees }}
+                        trainee(s)
+                    </div>
+
+                </div>
+
+
+                <div class="score">
+
+                    <div class="score-value">
+                        {{ top_provider.performance_score }}
+                    </div>
+
+                    <div class="score-label">
+                        PERFORMANCE
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="metric-grid">
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Employment
+                    </div>
+
+                    <div class="metric-value">
+                        {{ top_provider.employment_rate }}%
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Avg Salary
+                    </div>
+
+                    <div class="metric-value">
+
+                        {% if top_provider.average_salary > 0 %}
+
+                            ₹{{ "{:,.0f}".format(
+                                top_provider.average_salary
+                            ) }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Relevance
+                    </div>
+
+                    <div class="metric-value">
+                        {{ top_provider.relevance_rate }}%
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🏢
+                </div>
+
+                <h4>
+                    No provider data
+                </h4>
+
+                <p>
+                    Provider performance will appear after
+                    trainee profiles are recorded.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+
+    <!-- TOP PROGRAM -->
+
+    <div class="ranking-card">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    🎓 Top Training Program
+                </h3>
+
+                <p>
+                    Highest calculated program score
+                </p>
+
+            </div>
+
+            <span class="panel-tag">
+                PROGRAM
+            </span>
+
+        </div>
+
+
+        {% if program_stats %}
+
+            {% set top_program = program_stats[0] %}
+
+            <div class="ranking-top">
+
+                <div class="rank-number">
+                    #1
+                </div>
+
+                <div>
+
+                    <div class="ranking-name">
+                        {{ top_program.program }}
+                    </div>
+
+                    <div class="ranking-label">
+                        {{ top_program.trainees }}
+                        trainee(s)
+                    </div>
+
+                </div>
+
+
+                <div class="score">
+
+                    <div class="score-value">
+                        {{ top_program.performance_score }}
+                    </div>
+
+                    <div class="score-label">
+                        PERFORMANCE
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="metric-grid">
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Employment
+                    </div>
+
+                    <div class="metric-value">
+                        {{ top_program.employment_rate }}%
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Avg Salary
+                    </div>
+
+                    <div class="metric-value">
+
+                        {% if top_program.average_salary > 0 %}
+
+                            ₹{{ "{:,.0f}".format(
+                                top_program.average_salary
+                            ) }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Relevance
+                    </div>
+
+                    <div class="metric-value">
+                        {{ top_program.relevance_rate }}%
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🎓
+                </div>
+
+                <h4>
+                    No program data
+                </h4>
+
+                <p>
+                    Program performance will appear after
+                    training information is recorded.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     PROVIDER PERFORMANCE TABLE
+========================================================== -->
+
+<section class="panel table-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3>
+                🏢 Training Provider Performance
+            </h3>
+
+            <p>
+                Ranked using employment, job relevance and salary
+                indicators.
+            </p>
+
+        </div>
+
+        <span class="panel-tag">
+            PROVIDER RANKING
+        </span>
+
+    </div>
+
+
+    {% if provider_stats %}
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Rank
+                    </th>
+
+                    <th>
+                        Training Provider
+                    </th>
+
+                    <th>
+                        Trainees
+                    </th>
+
+                    <th>
+                        Outcomes
+                    </th>
+
+                    <th>
+                        Employment
+                    </th>
+
+                    <th>
+                        Avg Salary
+                    </th>
+
+                    <th>
+                        Relevance
+                    </th>
+
+                    <th>
+                        Score
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for provider in provider_stats %}
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            #{{ loop.index }}
+                        </strong>
+                    </td>
+
+
+                    <td>
+
+                        <div class="provider-name">
+                            {{ provider.provider }}
+                        </div>
+
+                        <div class="small-text">
+                            {{ provider.outcomes }}
+                            recorded outcome(s)
+                        </div>
+
+                    </td>
+
+
+                    <td>
+                        {{ provider.trainees }}
+                    </td>
+
+
+                    <td>
+                        {{ provider.outcomes }}
+                    </td>
+
+
+                    <td>
+                        {{ provider.employment_rate }}%
+                    </td>
+
+
+                    <td>
+
+                        {% if provider.average_salary > 0 %}
+
+                            ₹{{ "{:,.0f}".format(
+                                provider.average_salary
+                            ) }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+                        {{ provider.relevance_rate }}%
+                    </td>
+
+
+                    <td>
+
+                        {% if provider.performance_score >= 70 %}
+
+                            <span
+                                class="
+                                    score-pill
+                                    good-pill
+                                "
+                            >
+                                {{ provider.performance_score }}
+                            </span>
+
+                        {% elif provider.performance_score < 50 %}
+
+                            <span
+                                class="
+                                    score-pill
+                                    attention-pill
+                                "
+                            >
+                                {{ provider.performance_score }}
+                            </span>
+
+                        {% else %}
+
+                            <span
+                                class="score-pill"
+                            >
+                                {{ provider.performance_score }}
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-state">
+
+        <div class="empty-icon">
+            🏢
+        </div>
+
+        <h4>
+            Provider analytics unavailable
+        </h4>
+
+        <p>
+            Add trainee training-provider information
+            to generate provider performance analytics.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+
+
+<!-- =========================================================
+     PROGRAM PERFORMANCE TABLE
+========================================================== -->
+
+<section class="panel table-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3>
+                🎓 Training Program Performance
+            </h3>
+
+            <p>
+                Compare programs based on measurable employment
+                outcomes.
+            </p>
+
+        </div>
+
+        <span class="panel-tag">
+            PROGRAM IMPACT
+        </span>
+
+    </div>
+
+
+    {% if program_stats %}
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Rank
+                    </th>
+
+                    <th>
+                        Training Program
+                    </th>
+
+                    <th>
+                        Trainees
+                    </th>
+
+                    <th>
+                        Outcomes
+                    </th>
+
+                    <th>
+                        Employment
+                    </th>
+
+                    <th>
+                        Avg Salary
+                    </th>
+
+                    <th>
+                        Relevance
+                    </th>
+
+                    <th>
+                        Score
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for program in program_stats %}
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            #{{ loop.index }}
+                        </strong>
+                    </td>
+
+
+                    <td>
+
+                        <div class="provider-name">
+                            {{ program.program }}
+                        </div>
+
+                        <div class="small-text">
+                            {{ program.outcomes }}
+                            recorded outcome(s)
+                        </div>
+
+                    </td>
+
+
+                    <td>
+                        {{ program.trainees }}
+                    </td>
+
+
+                    <td>
+                        {{ program.outcomes }}
+                    </td>
+
+
+                    <td>
+                        {{ program.employment_rate }}%
+                    </td>
+
+
+                    <td>
+
+                        {% if program.average_salary > 0 %}
+
+                            ₹{{ "{:,.0f}".format(
+                                program.average_salary
+                            ) }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+                        {{ program.relevance_rate }}%
+                    </td>
+
+
+                    <td>
+
+                        {% if program.performance_score >= 70 %}
+
+                            <span
+                                class="
+                                    score-pill
+                                    good-pill
+                                "
+                            >
+                                {{ program.performance_score }}
+                            </span>
+
+                        {% elif program.performance_score < 50 %}
+
+                            <span
+                                class="
+                                    score-pill
+                                    attention-pill
+                                "
+                            >
+                                {{ program.performance_score }}
+                            </span>
+
+                        {% else %}
+
+                            <span
+                                class="score-pill"
+                            >
+                                {{ program.performance_score }}
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-state">
+
+        <div class="empty-icon">
+            🎓
+        </div>
+
+        <h4>
+            Program analytics unavailable
+        </h4>
+
+        <p>
+            Add training-program information to generate
+            program performance analytics.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+<!-- =========================================================
+     SKILL GAP INTELLIGENCE
+========================================================= -->
+
+<section class="section-card skill-gap-section">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="section-eyebrow">
+                POLICY INTELLIGENCE
+            </p>
+
+            <h2>
+                🔎 Skill Gap Intelligence
+            </h2>
+
+            <p>
+                Compare industry demand with current training supply
+                to identify where skilling capacity should change.
+            </p>
+        </div>
+
+        <span class="section-badge">
+            DEMO / SYNTHETIC DATA
+        </span>
+
+    </div>
+
+
+    <!-- Explanation -->
+
+    <div class="skill-gap-intro">
+
+        <div class="gap-intro-icon">
+            📊
+        </div>
+
+        <div>
+
+            <strong>
+                Demand → Supply → Gap → Action
+            </strong>
+
+            <p>
+                A positive gap means industry demand is higher than
+                current training supply. Larger gaps receive higher
+                intervention priority.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Skill Gap Table -->
+
+    <div class="table-wrapper">
+
+        <table class="skill-gap-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        SKILL
+                    </th>
+
+                    <th>
+                        INDUSTRY DEMAND
+                    </th>
+
+                    <th>
+                        TRAINING SUPPLY
+                    </th>
+
+                    <th>
+                        GAP
+                    </th>
+
+                    <th>
+                        PRIORITY
+                    </th>
+
+                    <th>
+                        RECOMMENDED ACTION
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for skill in skill_gap_data %}
+
+                <tr>
+
+                    <!-- Skill -->
+
+                    <td>
+
+                        <div class="skill-name">
+
+                            <span class="skill-icon">
+                                💼
+                            </span>
+
+                            <strong>
+                                {{ skill.skill }}
+                            </strong>
+
+                        </div>
+
+                    </td>
+
+
+                    <!-- Demand -->
+
+                    <td>
+
+                        <div class="metric-cell">
+
+                            <strong>
+                                {{ skill.demand }}%
+                            </strong>
+
+                            <div class="mini-progress">
+
+                                <div
+                                    class="mini-progress-fill demand-fill"
+                                    style="width: {{ skill.demand }}%;"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+
+                    <!-- Supply -->
+
+                    <td>
+
+                        <div class="metric-cell">
+
+                            <strong>
+                                {{ skill.supply }}%
+                            </strong>
+
+                            <div class="mini-progress">
+
+                                <div
+                                    class="mini-progress-fill supply-fill"
+                                    style="width: {{ skill.supply }}%;"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+
+                    <!-- Gap -->
+
+                    <td>
+
+                        {% if skill.gap >= 20 %}
+
+                            <span class="gap-value gap-high">
+                                +{{ skill.gap }}%
+                            </span>
+
+                        {% elif skill.gap >= 8 %}
+
+                            <span class="gap-value gap-medium">
+                                +{{ skill.gap }}%
+                            </span>
+
+                        {% elif skill.gap >= -8 %}
+
+                            <span class="gap-value gap-low">
+                                {{ skill.gap }}%
+                            </span>
+
+                        {% else %}
+
+                            <span class="gap-value gap-review">
+                                {{ skill.gap }}%
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- Priority -->
+
+                    <td>
+
+                        {% if skill.priority == "HIGH" %}
+
+                            <span class="priority-badge priority-high">
+                                🔴 HIGH
+                            </span>
+
+                        {% elif skill.priority == "MEDIUM" %}
+
+                            <span class="priority-badge priority-medium">
+                                🟡 MEDIUM
+                            </span>
+
+                        {% elif skill.priority == "LOW" %}
+
+                            <span class="priority-badge priority-low">
+                                🟢 LOW
+                            </span>
+
+                        {% else %}
+
+                            <span class="priority-badge priority-review">
+                                🔵 REVIEW
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <!-- Action -->
+
+                    <td>
+
+                        <span class="action-text">
+
+                            {% if skill.priority == "HIGH" %}
+
+                                ↑ Increase training capacity
+
+                            {% elif skill.priority == "MEDIUM" %}
+
+                                → Expand targeted training
+
+                            {% elif skill.priority == "LOW" %}
+
+                                ✓ Maintain current capacity
+
+                            {% else %}
+
+                                ↘ Review training capacity
+
+                            {% endif %}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- Government Recommendation -->
+
+    <div class="gap-recommendation">
+
+        <div class="recommendation-icon">
+            💡
+        </div>
+
+        <div>
+
+            <strong>
+                Government Action Insight
+            </strong>
+
+            <p>
+
+                Prioritize training expansion for skills with
+                <strong>high industry demand and low training supply</strong>.
+                This helps move SkillTrack from measuring past outcomes
+                toward planning future skilling capacity.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     EMPLOYMENT SUMMARY
+========================================================== -->
+
+<section class="panel table-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3>
+                Employment Summary
+            </h3>
+
+            <p>
+                Current distribution of trainee outcomes
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Category
+                    </th>
+
+                    <th>
+                        Count
+                    </th>
+
+                    <th>
+                        Share
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                <tr>
+
+                    <td>
+                        Employed
+                    </td>
+
+                    <td>
+                        {{ employed }}
+                    </td>
+
+                    <td>
+
+                        {% if total_outcomes > 0 %}
+
+                            {{ "%.1f"|format(
+                                employed / total_outcomes * 100
+                            ) }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Self-employed
+                    </td>
+
+                    <td>
+                        {{ self_employed }}
+                    </td>
+
+                    <td>
+
+                        {% if total_outcomes > 0 %}
+
+                            {{ "%.1f"|format(
+                                self_employed / total_outcomes * 100
+                            ) }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Unemployed
+                    </td>
+
+                    <td>
+                        {{ unemployed }}
+                    </td>
+
+                    <td>
+
+                        {% if total_outcomes > 0 %}
+
+                            {{ "%.1f"|format(
+                                unemployed / total_outcomes * 100
+                            ) }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        Further Education
+                    </td>
+
+                    <td>
+                        {{ further_education }}
+                    </td>
+
+                    <td>
+
+                        {% if total_outcomes > 0 %}
+
+                            {{ "%.1f"|format(
+                                further_education / total_outcomes * 100
+                            ) }}%
+
+                        {% else %}
+
+                            0%
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     RECENT OUTCOMES
+========================================================== -->
+
+<section class="panel table-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <h3>
+                Recent Outcome Records
+            </h3>
+
+            <p>
+                Latest trainee-reported career outcomes
+            </p>
+
+        </div>
+
+        <span class="panel-tag">
+            LIVE DATABASE
+        </span>
+
+    </div>
+
+
+    {% if outcomes %}
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Follow-up
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Company
+                    </th>
+
+                    <th>
+                        Job Role
+                    </th>
+
+                    <th>
+                        Salary
+                    </th>
+
+                    <th>
+                        Relevance
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for outcome in outcomes %}
+
+                <tr>
+
+                    <td>
+                        {{ outcome.followup_period }}
+                    </td>
+
+
+                    <td>
+
+                        {% if outcome.employment_status|lower == "employed" %}
+
+                            <span
+                                class="
+                                    status-pill
+                                    status-employed
+                                "
+                            >
+                                ✓ Employed
+                            </span>
+
+                        {% elif outcome.employment_status|lower == "unemployed" %}
+
+                            <span
+                                class="
+                                    status-pill
+                                    status-unemployed
+                                "
+                            >
+                                Unemployed
+                            </span>
+
+                        {% else %}
+
+                            <span
+                                class="
+                                    status-pill
+                                    status-other
+                                "
+                            >
+                                {{ outcome.employment_status }}
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+                        {{ outcome.company_name or "—" }}
+                    </td>
+
+
+                    <td>
+                        {{ outcome.job_role or "—" }}
+                    </td>
+
+
+                    <td>
+
+                        {% if outcome.monthly_salary %}
+
+                            ₹{{ "{:,.0f}".format(
+                                outcome.monthly_salary
+                            ) }}
+
+                        {% else %}
+
+                            —
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+                        {{ outcome.job_relevance or "—" }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-state">
+
+        <div class="empty-icon">
+            📊
+        </div>
+
+        <h4>
+            No outcome records yet
+        </h4>
+
+        <p>
+            Outcome records will appear here after trainees
+            complete their follow-up.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</section>
+
+
+
+<div class="footer-note">
+
+    SkillTrack 360° • Government Analytics Prototype •
+    Demo / Synthetic Data
+
+</div>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     CHARTS
+========================================================== -->
+
+<script>
+
+    /* =====================================================
+       EMPLOYMENT CHART
+    ====================================================== */
+
+    const employmentCtx =
+        document
+            .getElementById("employmentChart")
+            .getContext("2d");
+
+
+    new Chart(
+        employmentCtx,
+        {
+
+            type: "doughnut",
+
+            data: {
+
+                labels: [
+                    "Employed",
+                    "Self-employed",
+                    "Unemployed",
+                    "Further Education"
+                ],
+
+                datasets: [
+
+                    {
+
+                        data: [
+
+                            {{ employed }},
+
+                            {{ self_employed }},
+
+                            {{ unemployed }},
+
+                            {{ further_education }}
+
+                        ],
+
+                        backgroundColor: [
+
+                            "#2878e8",
+
+                            "#635bff",
+
+                            "#f04438",
+
+                            "#f79009"
+
+                        ],
+
+                        borderWidth: 0
+
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+
+                        position: "bottom",
+
+                        labels: {
+
+                            padding: 18,
+
+                            usePointStyle: true
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+
+
+    /* =====================================================
+       RELEVANCE CHART
+    ====================================================== */
+
+    const relevanceCtx =
+        document
+            .getElementById("relevanceChart")
+            .getContext("2d");
+
+
+    new Chart(
+        relevanceCtx,
+        {
+
+            type: "bar",
+
+            data: {
+
+                labels: [
+
+                    "Highly Relevant",
+
+                    "Partially Relevant",
+
+                    "Not Relevant"
+
+                ],
+
+                datasets: [
+
+                    {
+
+                        label: "Outcomes",
+
+                        data: [
+
+                            {{ highly_relevant }},
+
+                            {{ partially_relevant }},
+
+                            {{ not_relevant }}
+
+                        ],
+
+                        backgroundColor: "#2878e8",
+
+                        borderRadius: 7,
+
+                        borderSkipped: false
+
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        ticks: {
+
+                            precision: 0
+
+                        }
+
+                    }
+
+                },
+
+                plugins: {
+
+                    legend: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    );
+
+
+
+    /* =====================================================
+       FOLLOW-UP CHART
+    ====================================================== */
+
+    const followupCtx =
+        document
+            .getElementById("followupChart")
+            .getContext("2d");
+
+
+    new Chart(
+        followupCtx,
+        {
+
+            type: "bar",
+
+            data: {
+
+                labels: [
+
+                    "3-Month",
+
+                    "6-Month",
+
+                    "12-Month"
+
+                ],
+
+                datasets: [
+
+                    {
+
+                        label: "Completed",
+
+                        data: [
+
+                            {{ three_month }},
+
+                            {{ six_month }},
+
+                            {{ twelve_month }}
+
+                        ],
+
+                        backgroundColor: "#635bff",
+
+                        borderRadius: 7,
+
+                        borderSkipped: false
+
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        ticks: {
+
+                            precision: 0
+
+                        }
+
+                    }
+
+                },
+
+                plugins: {
+
+                    legend: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    );
+
+
+
+    /* =====================================================
+       SALARY CHART
+    ====================================================== */
+
+    const salaryCtx =
+        document
+            .getElementById("salaryChart")
+            .getContext("2d");
+
+
+    new Chart(
+        salaryCtx,
+        {
+
+            type: "bar",
+
+            data: {
+
+                labels: [
+
+                    "Average Monthly Salary"
+
+                ],
+
+                datasets: [
+
+                    {
+
+                        label: "Salary",
+
+                        data: [
+
+                            {{ average_salary }}
+
+                        ],
+
+                        backgroundColor: "#2878e8",
+
+                        borderRadius: 7,
+
+                        borderSkipped: false
+
+                    }
+
+                ]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        ticks: {
+
+                            callback: function(value) {
+
+                                return "₹" +
+                                    value.toLocaleString("en-IN");
+
+                            }
+
+                        }
+
+                    }
+
+                },
+
+                plugins: {
+
+                    legend: {
+
+                        display: false
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
